@@ -55,7 +55,7 @@ export default function Login() {
   return (
     <div className="Login">
       <h2>Login</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>} {/* displays if credentials are wrong */}
+      {error && <p>{error}</p>} {/* displays if credentials are wrong */}
       
       <form onSubmit={handleLogin} className="form">
         <input

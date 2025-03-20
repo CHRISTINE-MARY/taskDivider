@@ -46,6 +46,7 @@ export default function Tasks() {
       });
       setData(res.data.tasks);
     } catch (error) {
+      setError("File format error");
       console.error("Error uploading file", error);
     }
   }; //extracts record from uploaded file
