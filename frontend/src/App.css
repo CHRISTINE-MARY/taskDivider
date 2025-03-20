@@ -1,0 +1,36 @@
+* {
+  padding: 0;
+  box-sizing: border-box;
+  transition: all ease 0.3s;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: url("./images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #0d222b;
+  background-attachment: fixed;
+}
+
+:root {
+  --primary-color: #ff647d;
+  --secondary-color: #225161;
+  --text-color: #ffffff;
+}
+h1 {
+  color: white;
+}
+
+button {
+  align-self: center;
+  padding: 0.5em;
+  font-size: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  border: none;
+  transition: all ease 0.1s;
+}
