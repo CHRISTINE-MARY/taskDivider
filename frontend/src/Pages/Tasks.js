@@ -52,8 +52,9 @@ export default function Tasks() {
   }; //extracts record from uploaded file
 
   const assignTasks = async () => {
+    const id=localStorage.getItem("id");
     try {
-      const res = await API.post("/tasks/assign", data, {
+      const res = await API.post("/tasks/assign", {data,admin_id:id}, {
         header: {
           "Content-Type": "application/json",
         },

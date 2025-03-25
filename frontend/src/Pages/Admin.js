@@ -17,6 +17,7 @@ export default function Admin() {
     phone: "",
     countryCode: "+1", // Default country code (USA)
     role: "agent",
+    admin_id: "",
   });
 
   //country code for phone
@@ -67,13 +68,17 @@ export default function Admin() {
   }; //handles form submit for agent addition
 
   const fetchAgents = async () => {
+    const id=localStorage.getItem("id");
     try {
-      const response = await API.get("/agent/listAgents");
+      const response = await API.post("/agent/listAgents",
+        {admin_id:id},
+        { headers: { "Content-Type": "application/json" }}
+      );
       loadAgents(response.data.data);
     } catch (err) {
       console.log(err.message);
     }
-  }; //fetches all the existing agents 
+  }; //fetches all the existing agents
 
   const toggleDropdown = (agentId) => {
     setExpandedAgent(expandedAgent === agentId ? null : agentId);
@@ -81,6 +86,19 @@ export default function Admin() {
 
   useEffect(() => {
     fetchAgents();
+  }, []);
+
+  useEffect(() => {
+    const id = localStorage.getItem("id");
+    if (id) {
+      
+      const adminId = id;
+      console.log("Admin ID set:", adminId);
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        admin_id: adminId,
+      }));
+    }
   }, []);
 
   return (
