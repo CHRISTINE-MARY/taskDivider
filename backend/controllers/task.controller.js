@@ -31,10 +31,10 @@ const getTasks = async (req, res) => {
 
 //to assign tasks to the agents available
 const assignTasks = async (req, res) => {
-  const data = req.body;
+  const {data,admin_id} = req.body;
   console.log("Headers received:", req.headers);
   try {
-    const AgentIDs = await User.find({ role: "agent" }).select("_id");
+    const AgentIDs = await User.find({ role: "agent" ,admin_id:admin_id}).select("_id");
     if (AgentIDs.length === 0) {
       return res.status(400).json({ error: "No agents found to assign tasks" });
     }

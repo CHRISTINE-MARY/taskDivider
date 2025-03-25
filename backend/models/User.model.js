@@ -8,6 +8,7 @@ const UserSchema = new mongoose.Schema({
   password: { type: String, required: true },
   role: { type: String, required: true },
   tasks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Task" }],
+  admin_id:{type:mongoose.Schema.Types.ObjectId,ref:"User"}
 });
 
 const User = mongoose.model("User", UserSchema);

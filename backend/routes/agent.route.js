@@ -18,7 +18,7 @@ router.post(
   registerUser
 ); //validates email and password
 
-router.get("/listAgents", listAgents);
+router.post("/listAgents", listAgents);
 router.post("/fetchAgent", fetchAgentData);
 
 module.exports = router;

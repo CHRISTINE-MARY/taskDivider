@@ -5,8 +5,9 @@ const bcrypt = require("bcrypt");
 
 //ro retrieve details of all agents added and their tasks assigned
 const listAgents = async (req, res) => {
+  const {admin_id}=req.body;
   try {
-    const agents = await User.find({ role: "agent" })
+    const agents = await User.find({ role: "agent" ,admin_id:admin_id})
       .select("-password")
       .populate("tasks");
     res.status(200).json({ success: true, data: agents });
@@ -37,7 +38,8 @@ const registerUser = async (req, res) => {
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
-  const { name, email, password, Phone, role } = req.body;
+  const { name, email, password, Phone, role ,admin_id} = req.body;
+  console.log(admin_id);
   try {
     let user = await User.findOne({ email });
     if (user) {
@@ -49,6 +51,7 @@ const registerUser = async (req, res) => {
       password,
       Phone,
       role,
+      admin_id
     });
 
     const salt = await bcrypt.genSalt(10);
