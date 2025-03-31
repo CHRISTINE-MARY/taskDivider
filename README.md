@@ -20,7 +20,7 @@ Task Divider is a task management application built using the MERN (MongoDB, Exp
 
 ### 1️⃣ Clone the Repository  
 ```sh
-git clone https://github.com/YOUR_USERNAME/task-divider.git
+git clone https://github.com/CHRISTINE-MARY/task-divider.git
 cd task-divider
 ```
 
